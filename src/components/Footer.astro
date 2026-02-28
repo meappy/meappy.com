@@ -1,0 +1,85 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-left">
+      <a href="/" class="footer-logo" aria-label="Meappy">
+        <svg class="footer-logo-m" width="22" height="22" viewBox="0 0 32 32" fill="none">
+          <defs>
+            <linearGradient id="footer-logo-grad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#00d4ff"/>
+              <stop offset="100%" stop-color="#7c5cfc"/>
+            </linearGradient>
+          </defs>
+          <path d="M6 24V8l7 10 7-10v16" stroke="url(#footer-logo-grad)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>E A P P Y</span>
+      </a>
+      <p class="footer-copyright">&copy; {currentYear} Meappy. All rights reserved.</p>
+    </div>
+    <div class="footer-links">
+      <!-- TODO: Add GitHub and LinkedIn once ready -->
+      <a href="mailto:hello@meappy.com">Email</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    padding: 2.5rem 2rem;
+    border-top: 1px solid var(--color-border);
+    background: var(--color-bg);
+  }
+
+  .footer-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.15em;
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-logo-m {
+    flex-shrink: 0;
+  }
+
+  .footer-copyright {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .footer-links a {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    transition: color var(--transition);
+  }
+
+  .footer-links a:hover {
+    color: var(--color-text);
+  }
+
+  @media (max-width: 768px) {
+    .footer-inner {
+      flex-direction: column;
+      text-align: center;
+      gap: 1.25rem;
+    }
+  }
+</style>

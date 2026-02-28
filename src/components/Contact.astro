@@ -1,0 +1,157 @@
+<section id="contact" class="contact">
+  <div class="contact-inner">
+    <div class="contact-content">
+      <p class="section-eyebrow">Let's Work Together</p>
+      <h2 class="section-title">Get in Touch</h2>
+      <p class="contact-text">
+        Have a project in mind or need help with your infrastructure? Reach out and let's discuss
+        how we can help.
+      </p>
+      <div class="contact-methods">
+        <a href="mailto:hello@meappy.com" class="contact-card">
+          <span class="contact-icon">
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+              ></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+          </span>
+          <div>
+            <strong>Email</strong>
+            <span>hello@meappy.com</span>
+          </div>
+        </a>
+        <!-- TODO: Add LinkedIn once company page is set up -->
+        <!-- TODO: Add GitHub once profile is cleaned up -->
+      </div>
+      <div class="contact-location">
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+          <circle cx="12" cy="10" r="3"></circle>
+        </svg>
+        <span>Singapore & Australia</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact {
+    padding: var(--section-padding);
+  }
+
+  .contact-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+
+  .contact-content {
+    max-width: 640px;
+  }
+
+  .section-eyebrow {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-accent);
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.25rem;
+  }
+
+  .contact-text {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--color-text-muted);
+    margin-bottom: 2.5rem;
+  }
+
+  .contact-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .contact-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    transition: border-color var(--transition), transform var(--transition);
+  }
+
+  .contact-card:hover {
+    border-color: rgba(0, 212, 255, 0.2);
+    transform: translateX(4px);
+  }
+
+  .contact-icon {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 212, 255, 0.08);
+    border-radius: 10px;
+    color: var(--color-accent);
+  }
+
+  .contact-card strong {
+    display: block;
+    font-size: 0.95rem;
+    margin-bottom: 0.15rem;
+  }
+
+  .contact-card span {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+  }
+
+  .contact-location {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+  }
+
+  .contact-location svg {
+    color: var(--color-accent);
+  }
+
+  @media (max-width: 768px) {
+    .contact-card {
+      padding: 1rem 1.25rem;
+    }
+  }
+</style>

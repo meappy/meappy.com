@@ -1,0 +1,142 @@
+---
+const services = [
+  {
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>`,
+    title: 'Infrastructure & DevOps',
+    description:
+      'Kubernetes orchestration, CI/CD pipelines, Terraform infrastructure-as-code, and cloud architecture across AWS, GCP, and Azure.',
+    tags: ['Kubernetes', 'CI/CD', 'Terraform', 'Cloud'],
+  },
+  {
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4c0 1.95-1.4 3.58-3.25 3.93"/><path d="M8.24 9.93A4 4 0 0 1 12 2"/><path d="M12 22c-4.97 0-9-2.69-9-6v-2c0-3.31 4.03-6 9-6s9 2.69 9 6v2c0 3.31-4.03 6-9 6Z"/><circle cx="12" cy="14" r="1"/></svg>`,
+    title: 'AI Automation',
+    description:
+      'Intelligent workflow automation, LLM integration, AI-powered chatbots, and custom machine learning pipelines for business processes.',
+    tags: ['LLMs', 'Workflow Automation', 'Chatbots', 'ML'],
+  },
+  {
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>`,
+    title: 'E-commerce Integration',
+    description:
+      'Platform integration, ERP connectivity, payment gateway setup, and inventory management systems for online retail.',
+    tags: ['ERP', 'Payments', 'Inventory', 'Platforms'],
+  },
+  {
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>`,
+    title: 'Custom Web & Mobile',
+    description:
+      'Full-stack web applications, cross-platform mobile apps, RESTful APIs, and interactive dashboards built to specification.',
+    tags: ['Web Apps', 'Mobile', 'APIs', 'Dashboards'],
+  },
+];
+---
+
+<section id="services" class="services">
+  <div class="services-inner">
+    <p class="section-eyebrow">What We Do</p>
+    <h2 class="section-title">Services</h2>
+    <div class="services-grid">
+      {
+        services.map((service) => (
+          <div class="service-card">
+            <div class="service-icon" set:html={service.icon} />
+            <h3 class="service-title">{service.title}</h3>
+            <p class="service-description">{service.description}</p>
+            <div class="service-tags">
+              {service.tags.map((tag) => (
+                <span class="tag">{tag}</span>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .services {
+    padding: var(--section-padding);
+  }
+
+  .services-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+
+  .section-eyebrow {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-accent);
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: 3rem;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .service-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 2rem;
+    transition: border-color var(--transition), transform var(--transition);
+  }
+
+  .service-card:hover {
+    border-color: rgba(0, 212, 255, 0.2);
+    transform: translateY(-2px);
+  }
+
+  .service-icon {
+    color: var(--color-accent);
+    margin-bottom: 1.25rem;
+  }
+
+  .service-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.01em;
+  }
+
+  .service-description {
+    font-size: 0.925rem;
+    line-height: 1.7;
+    color: var(--color-text-muted);
+    margin-bottom: 1.25rem;
+  }
+
+  .service-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tag {
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.25rem 0.75rem;
+    border-radius: 100px;
+    background: rgba(0, 212, 255, 0.08);
+    color: var(--color-accent);
+    border: 1px solid rgba(0, 212, 255, 0.12);
+  }
+
+  @media (max-width: 768px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

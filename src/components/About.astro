@@ -1,0 +1,181 @@
+<section id="about" class="about">
+  <div class="about-inner">
+    <p class="section-eyebrow">Who We Are</p>
+    <h2 class="section-title">About</h2>
+    <div class="about-grid">
+      <div class="about-content">
+        <p>
+          Meappy is a technology consultancy based across <strong>Singapore</strong> and
+          <strong>Australia</strong>, delivering hands-on engineering for businesses that need
+          reliable, scalable infrastructure and intelligent automation.
+        </p>
+        <p>
+          With deep experience across cloud platforms, container orchestration, CI/CD, and
+          AI-driven workflows, we help organisations move faster — whether that means migrating to
+          Kubernetes, integrating large language models into operations, or building a custom
+          application from the ground up.
+        </p>
+        <p>
+          We believe in pragmatic solutions: the right tool for the job, clean architecture, and
+          systems that run themselves so you can focus on what matters.
+        </p>
+      </div>
+      <div class="about-highlights">
+        <div class="highlight">
+          <span class="highlight-icon"
+            ><svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"
+              ></path></svg
+            ></span
+          >
+          <div>
+            <strong>Production-Grade Infrastructure</strong>
+            <p>Kubernetes, Helm, ArgoCD, Terraform — built to scale and self-heal.</p>
+          </div>
+        </div>
+        <div class="highlight">
+          <span class="highlight-icon"
+            ><svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              ><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg
+            ></span
+          >
+          <div>
+            <strong>AI-First Approach</strong>
+            <p>LLM integration, intelligent automation, and machine learning pipelines.</p>
+          </div>
+        </div>
+        <div class="highlight">
+          <span class="highlight-icon"
+            ><svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              ><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"
+              ></line><path
+                d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+              ></path></svg
+            ></span
+          >
+          <div>
+            <strong>Singapore & Australia</strong>
+            <p>Serving clients across Asia-Pacific and globally.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    padding: var(--section-padding);
+    background: var(--color-bg-elevated);
+  }
+
+  .about-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+
+  .section-eyebrow {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-accent);
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: 3rem;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .about-content p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--color-text-muted);
+    margin-bottom: 1.25rem;
+  }
+
+  .about-content strong {
+    color: var(--color-text);
+    font-weight: 600;
+  }
+
+  .about-highlights {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .highlight {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 1.25rem;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+  }
+
+  .highlight-icon {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 212, 255, 0.08);
+    border-radius: 8px;
+    color: var(--color-accent);
+  }
+
+  .highlight strong {
+    display: block;
+    font-size: 0.95rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .highlight p {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+  }
+
+  @media (max-width: 768px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+  }
+</style>
