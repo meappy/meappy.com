@@ -1,0 +1,115 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Book a Call — Meappy" description="Schedule a 15 or 30 minute call with Meappy to discuss your technology project.">
+  <Header />
+
+  <main class="book-page">
+    <div class="book-inner">
+      <p class="section-eyebrow">Book a Call</p>
+      <h1 class="section-title">Schedule a Chat</h1>
+      <p class="book-text">
+        Pick a time that works for you. We offer 15 and 30 minute slots to discuss your project,
+        infrastructure needs, or any questions you might have.
+      </p>
+      <div class="cal-embed-container" id="my-cal-inline"></div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .book-page {
+    padding: 8rem 2rem 4rem;
+  }
+
+  .book-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+
+  .section-eyebrow {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-accent);
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.25rem;
+  }
+
+  .book-text {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--color-text-muted);
+    max-width: 640px;
+    margin-bottom: 2.5rem;
+  }
+
+  .cal-embed-container {
+    width: 100%;
+    min-height: 600px;
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+
+  @media (max-width: 768px) {
+    .book-page {
+      padding: 6rem 1.5rem 3rem;
+    }
+
+    .cal-embed-container {
+      min-height: 500px;
+    }
+  }
+</style>
+
+<script>
+  (function (C, A, L) {
+    let p = function (a, ar) { a.q.push(ar); };
+    let d = C.document;
+    C.Cal = C.Cal || function () {
+      let cal = C.Cal;
+      let ar = arguments;
+      if (!cal.loaded) {
+        cal.ns = {};
+        cal.q = cal.q || [];
+        d.head.appendChild(d.createElement('script')).src = A;
+        cal.loaded = true;
+      }
+      if (ar[0] === L) {
+        const api = function () { p(api, arguments); };
+        const namespace = ar[1];
+        api.q = api.q || [];
+        typeof namespace === 'string' ? (cal.ns[namespace] = api) && p(api, ar) : p(cal, ar);
+        return;
+      }
+      p(cal, ar);
+    };
+  })(window, 'https://app.cal.com/embed/embed.js', 'init');
+
+  Cal('init', { origin: 'https://cal.com' });
+
+  Cal('inline', {
+    elementOrSelector: '#my-cal-inline',
+    calLink: 'geraldsim',
+    layout: 'month_view',
+  });
+
+  Cal('ui', {
+    theme: 'dark',
+    styles: { branding: { brandColor: '#00d4ff' } },
+    hideEventTypeDetails: false,
+    layout: 'month_view',
+  });
+</script>
