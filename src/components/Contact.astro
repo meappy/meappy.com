@@ -34,25 +34,31 @@
         <!-- TODO: Add LinkedIn once company page is set up -->
         <!-- TODO: Add GitHub once profile is cleaned up -->
       </div>
-      <div class="contact-location">
-        <svg
-          width="16"
-          height="16"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-          <circle cx="12" cy="10" r="3"></circle>
-        </svg>
-        <span>Singapore & Australia</span>
+    </div>
+
+    <div class="contact-booking">
+      <h3 class="booking-title">Book a Call</h3>
+      <div class="cal-embed-container" id="my-cal-inline"></div>
+    </div>
+
+    <div class="contact-map-section">
+      <h3 class="map-title">Our Locations</h3>
+      <div class="map-container" id="location-map"></div>
+      <div class="map-labels">
+        <div class="map-label">
+          <span class="map-pin"></span>
+          <span>Adelaide, Australia</span>
+        </div>
+        <div class="map-label">
+          <span class="map-pin"></span>
+          <span>Singapore</span>
+        </div>
       </div>
     </div>
   </div>
 </section>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
 <style>
   .contact {
@@ -66,6 +72,7 @@
 
   .contact-content {
     max-width: 640px;
+    margin-bottom: 3rem;
   }
 
   .section-eyebrow {
@@ -95,7 +102,6 @@
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    margin-bottom: 2rem;
   }
 
   .contact-card {
@@ -137,7 +143,45 @@
     color: var(--color-text-muted);
   }
 
-  .contact-location {
+  .contact-booking {
+    margin-bottom: 3rem;
+  }
+
+  .booking-title,
+  .map-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.01em;
+  }
+
+  .cal-embed-container {
+    width: 100%;
+    height: 600px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+  }
+
+  .contact-map-section {
+    margin-bottom: 1rem;
+  }
+
+  .map-container {
+    width: 100%;
+    height: 360px;
+    border-radius: var(--radius);
+    border: 1px solid var(--color-border);
+    overflow: hidden;
+  }
+
+  .map-labels {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1rem;
+  }
+
+  .map-label {
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -145,13 +189,134 @@
     color: var(--color-text-muted);
   }
 
-  .contact-location svg {
-    color: var(--color-accent);
+  .map-pin {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    box-shadow: 0 0 8px rgba(0, 212, 255, 0.5);
   }
 
   @media (max-width: 768px) {
     .contact-card {
       padding: 1rem 1.25rem;
     }
+
+    .map-container {
+      height: 280px;
+    }
+
+    .cal-embed-container {
+      height: 500px;
+    }
+
+    .map-labels {
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+  }
+</style>
+
+<script>
+  // Leaflet map
+  async function initMap() {
+    const L = await import('https://unpkg.com/leaflet@1.9.4/dist/leaflet-src.esm.js');
+
+    const map = L.map('location-map', {
+      zoomControl: false,
+      attributionControl: false,
+      scrollWheelZoom: false,
+      dragging: true,
+    }).setView([-15, 120], 3);
+
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      maxZoom: 19,
+    }).addTo(map);
+
+    L.control.attribution({ prefix: false }).addTo(map);
+
+    const pinIcon = L.divIcon({
+      className: 'custom-pin',
+      html: '<div style="width:14px;height:14px;background:#00d4ff;border-radius:50%;box-shadow:0 0 12px rgba(0,212,255,0.6),0 0 24px rgba(0,212,255,0.3);border:2px solid rgba(0,212,255,0.8);"></div>',
+      iconSize: [14, 14],
+      iconAnchor: [7, 7],
+    });
+
+    const adelaide = L.marker([-34.9285, 138.6007], { icon: pinIcon }).addTo(map);
+    adelaide.bindPopup(
+      '<div style="font-family:Inter,sans-serif;font-size:13px;font-weight:600;color:#e8e8e8;background:#161616;padding:4px 8px;border-radius:6px;">Adelaide, Australia</div>',
+      { className: 'dark-popup' }
+    );
+
+    const singapore = L.marker([1.3521, 103.8198], { icon: pinIcon }).addTo(map);
+    singapore.bindPopup(
+      '<div style="font-family:Inter,sans-serif;font-size:13px;font-weight:600;color:#e8e8e8;background:#161616;padding:4px 8px;border-radius:6px;">Singapore</div>',
+      { className: 'dark-popup' }
+    );
+
+    const bounds = L.latLngBounds([[-34.9285, 138.6007], [1.3521, 103.8198]]);
+    map.fitBounds(bounds, { padding: [60, 60] });
+  }
+
+  initMap();
+
+  // Cal.com embed
+  (function (C, A, L) {
+    let p = function (a, ar) { a.q.push(ar); };
+    let d = C.document;
+    C.Cal = C.Cal || function () {
+      let cal = C.Cal;
+      let ar = arguments;
+      if (!cal.loaded) {
+        cal.ns = {};
+        cal.q = cal.q || [];
+        d.head.appendChild(d.createElement('script')).src = A;
+        cal.loaded = true;
+      }
+      if (ar[0] === L) {
+        const api = function () { p(api, arguments); };
+        const namespace = ar[1];
+        api.q = api.q || [];
+        typeof namespace === 'string' ? (cal.ns[namespace] = api) && p(api, ar) : p(cal, ar);
+        return;
+      }
+      p(cal, ar);
+    };
+  })(window, 'https://app.cal.com/embed/embed.js', 'init');
+
+  Cal('init', { origin: 'https://cal.com' });
+
+  Cal('inline', {
+    elementOrSelector: '#my-cal-inline',
+    calLink: 'geraldsim',
+    layout: 'month_view',
+  });
+
+  Cal('ui', {
+    theme: 'dark',
+    styles: { branding: { brandColor: '#00d4ff' } },
+    hideEventTypeDetails: false,
+    layout: 'month_view',
+  });
+</script>
+
+<style is:global>
+  .leaflet-popup-content-wrapper {
+    background: #161616 !important;
+    border: 1px solid #222 !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
+  }
+
+  .leaflet-popup-tip {
+    background: #161616 !important;
+  }
+
+  .leaflet-popup-content {
+    margin: 0 !important;
+  }
+
+  .dark-popup .leaflet-popup-close-button {
+    display: none;
   }
 </style>
