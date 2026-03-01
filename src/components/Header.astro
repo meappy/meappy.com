@@ -135,14 +135,14 @@ const navLinks = [
       top: 72px;
       left: 0;
       right: 0;
-      bottom: 0;
+      height: calc(100vh - 72px);
+      z-index: 999;
       flex-direction: column;
+      align-items: center;
       justify-content: flex-start;
       padding-top: 2rem;
       gap: 1.5rem;
-      background: rgba(10, 10, 10, 0.98);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      background: #0a0a0a;
       transform: translateX(100%);
       transition: transform var(--transition);
     }
